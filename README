@@ -1,0 +1,21 @@
+### Reference Installation
+Reference File Path: 
+|File Type|File Path|
+|--|--|
+|*.css|/reference/css/|
+|*.js|/reference/js/|
+
+JQuery
+```
+https://unpkg.com/jquery@3.7.1/dist/jquery.js
+```
+UIKit 
+```
+https://unpkg.com/uikit@3.19.2/dist/css/uikit.min.css
+https://unpkg.com/uikit@3.19.2/dist/js/uikit.min.js
+https://unpkg.com/uikit@3.19.2/dist/js/uikit-icons.min.js
+```
+ECharts
+```
+https://unpkg.com/echarts@5.5.0/dist/echarts.js
+```

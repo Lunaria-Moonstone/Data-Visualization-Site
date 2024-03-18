@@ -1,0 +1,9 @@
+{
+  "name": "WYData-Visualization-Demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "script": {
+    "dev": "node server.js"
+  }
+}

@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.dataviews-main-body {
+  display: flex;
+  gap: 10px;
+
+  height: 100%;
+
+  padding-top: var(--var-base-margin);
+}
+
+#dataviews-center-controller {
+  width: 20%;
+}
+
+#main-dataviews {
+  flex: 1;
+  
+  height: 100%;
+  width: 100%;
+}

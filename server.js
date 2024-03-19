@@ -59,6 +59,6 @@ const server = http.createServer((req, res) => {
 });
 
 // 监听指定端口
-server.listen(8000, () => {
-  console.log('Server is running on port 8000.');
+server.listen(8080, () => {
+  console.log('Server is running on port 8080.');
 });

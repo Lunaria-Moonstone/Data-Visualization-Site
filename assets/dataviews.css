@@ -13,6 +13,13 @@
   width: 20%;
 }
 
+.dataviews-center-controller-inner {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #main-dataviews {
   flex: 1;
   

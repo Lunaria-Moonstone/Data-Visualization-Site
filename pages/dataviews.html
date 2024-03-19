@@ -4,12 +4,25 @@
   <div class="uk-container">
     <div class="dataviews-main-body">
       <div id="dataviews-center-controller">
-        <div>
-          <div class="select is-small">
-            <select>
-              <option>Rounded dropdown</option>
-              <option>With options</option>
-            </select>
+        <div class="dataviews-center-controller-inner">
+          <ul class="uk-subnav uk-subnav-pill" uk-switcher>
+            <li><a onclick="changeOptions()">出售</a></li>
+            <li><a onclick="changeOptions()">租聘</a></li>
+          </ul>
+          <div class="uk-margin">
+            <div uk-form-custom="target: > * > span:first-child">
+              <select aria-label="Custom controls">
+                <option value="">请选择城市</option>
+                <option value="1">哈尔滨</option>
+                <option value="2">黑河</option>
+                <option value="3">绥化</option>
+                <option value="4">齐齐哈尔</option>
+              </select>
+              <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

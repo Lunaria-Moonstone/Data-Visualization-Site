@@ -1,5 +1,5 @@
 // -- 路由集合
-const ROUTESET = new Set([ 'home', 'dataviews' ])
+const ROUTESET = new Set([ 'home', 'dataviews', 'hotpots' ])
 
 // -- 当前路由
 let route = ''
@@ -9,13 +9,19 @@ let route_preload = {
   'home': () => {
     $('head').append(`<link rel="stylesheet" type="text/css" href="/assets/home.css" />`)
     $('#template').load('/pages/home.html', () => {
-      $.getScript('/scripts/home.js', () => initMap())      
+      $.getScript('/scripts/home.js', () => initMainMap())      
     })
   },
   'dataviews': () => {
     $('head').append(`<link rel="stylesheet" type="text/css" href="/assets/dataviews.css" />`)
     $('#template').load('/pages/dataviews.html', () => {
       $.getScript('/scripts/dataviews.js', () => initMainViews())      
+    })
+  },
+  'hotpots': () => {
+    $('head').append(`<link rel="stylesheet" type="text/css" href="/assets/hotpots.css" />`)
+    $('#template').load('/pages/hotpots.html', () => {
+      $.getScript('/scripts/hotpots.js', () => initHotpotsMap())
     })
   }
 }
@@ -31,9 +37,16 @@ function destroy() {
       console.info('destroy home')
       break
     case 'dataviews':
+      destroyMainViews()
       $("script[src='/scripts/dataviews.js']").remove()
       $("link[href='/assets/dataviews.css']").remove() 
       console.info('destroy dataviews')
+      break
+    case 'hotpots':
+      destroyHotpotsMap()
+      $("script[src='/scripts/hotpots.js']").remove()
+      $("link[href='/assets/hotpots.css']").remove()
+      console.info('destroy hotpots')
       break
   }
 }
@@ -53,7 +66,7 @@ function go2(route_name) {
 
   // -- 类型诊断
   if (typeof route_name !== 'string') throw new Error('route_name must be a string')
-  if (! ROUTESET.has(route_name)) throw new Error('route_name must be one of ' + ROUTESET.join(', '))
+  if (! ROUTESET.has(route_name)) throw new Error('route_name must be one of "' + Array.from(ROUTESET.keys()).join(', ') + '"')
 
   route_preload[route_name]()
   route = route_name

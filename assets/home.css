@@ -4,4 +4,29 @@
   height: 100%;
   width: 100%;
   /* background-color: black; */
+  z-index: 0;
+}
+
+.main-map-info-window {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #fff;
+}
+
+.main-map-info-window:nth-child(n+1) div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-map-info-window:nth-child(n+1) div span:first-child {
+  font-weight: bold;
+}
+
+.main-map-search {
+  position: fixed;
+  top: 80px;
+  padding: var(--var-base-margin) var(--var-base-margin);
+
+  z-index: 999;
 }

@@ -40,19 +40,39 @@ function initMainMap() {
 
 function initMainMapSearch() {
   layui.use(function () {
+
+    const mapSkip = (lat, lng) => {
+      map.setCenter(new TMap.LatLng(lat, lng))
+    }
+
     var dropdown = layui.dropdown
     var think_word = $('#main-map-search-input').val
-    var think_word_list = data['data'].filter(x => (x['name'].includes(think_word) || x['address'].includes(think_word))).map(x => { return { id: x.id, title: x.name } })
-    console.log(data['data'])
-    dropdown.render({
-      elem: '#main-map-search-input',
+    var think_word_list = data['data'].filter(x => x.name.includes('') || x.address.includes('')).map(x => { return { id: x.id, title: x.name } })
+
+    // console.log(data['data'].filter(x => x.name.includes('') || x.address.includes('')).map(x => { return { id: x.id, title: x.name } }))
+    dropdown.render({ 
+      id: 'main-map-search-autocomplete',
+      elem: '#main-map-search-input', 
+      data: think_word_list, 
+      click: function (target) { 
+        this.elem.val(target.title) 
+        mapSkip(...data['data'].filter(x => x.id === target.id)[0]['location'].match(/[\d\.]+/g).map(x => Number(x)))
+      },
+      // style: 'width: 234px; padding-left: 0;'
+      className: 'layui-form-select-dropdown-search',
+    }) 
+  }) 
+  // 监听搜索框的输入事件
+  $('#main-map-search-input').on('input', function () {
+    var dropdown = layui.dropdown
+    var think_word = $(this).val()
+    var think_word_list = data['data'].filter(x => x.name.includes(think_word) || x.address.includes(think_word)).map(x => { return { id: x.id, title: x.name } })
+    console.log(think_word, think_word_list)
+    dropdown.reload('main-map-search-autocomplete', {
       data: think_word_list,
-      click: function (target) {
-        this.elem.val(target.name)
-      }
+      show: true
     })
   })
-  console.info('wrap ok')
 }
 
 function initMap() {
@@ -115,6 +135,7 @@ function initMap() {
     `);//设置信息窗内容
   })
 }
+
 
 // function destroyMap() {
 //   delete map

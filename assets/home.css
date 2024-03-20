@@ -30,3 +30,11 @@
 
   z-index: 999;
 }
+
+.layui-form-select-dropdown-search {
+  width: 234px;
+}
+
+.layui-form-select-dropdown-search .layui-menu {
+  padding-left: 0;
+}
